@@ -1,0 +1,58 @@
+# Ignore lambda builds and event structures
+backend/events.js
+backend/functions.zip
+
+# Ignore node_modules
+node_modules
+# Ignore build artifacts
+dist
+# Ignore coverage reports
+coverage
+# Ignore environment variables
+.env
+# Ignore IDE specific files
+*.config.js
+# Ignore local environment variables
+.env.local
+#Ignore lock files
+package-lock.json
+yarn.lock
+
+#Ignore state files
+terraform.tfstate
+terraform.tfstate.backup
+# Ignore terraform plan
+terraform.tfplan
+# Ignore terraform variables
+terraform.tfvars
+#Ignore provider data
+.terraform
+# Ignore terraform lock file
+.terraform.lock.hcl
+
+# Ignore shell scripts
+*.sh
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
