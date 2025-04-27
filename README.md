@@ -1,45 +1,78 @@
 # Football Application ⚽
 
 ## Overview
-This is a **Football Application** where users can log in and view player data fetched from AWS services.
+This is a **Football Application** built using **AWS** services and a **React** frontend. It allows users to log in, retrieve player data, and display information on football players.
 
 ## Infrastructure
-- Provisioned using **Terraform** and **AWS**.
-- Services used:
-  - AWS Lambda
-  - API Gateway
-  - DynamoDB
-  - IAM Policies and Roles
-  - S3 Buckets and Triggers
+- **Terraform** and **AWS** are used to provision the infrastructure.
+- **AWS Services** utilized:
+  - **Lambda**: For backend logic
+  - **API Gateway**: To expose RESTful APIs
+  - **DynamoDB**: To store player data
+  - **IAM**: For policies and roles
+  - **S3 Buckets**: To store CSV files
+  - **Triggers**: For S3 to DynamoDB integration
 
-## How It Works
-- **Data Population**:  
-  Upload a `data.csv` file to the S3 bucket to automatically populate the DynamoDB table via S3 triggers.
-  
-- **Frontend**:  
-  A **React application** with:
-  - Login system (Access and Refresh Tokens)
-  - Fetches player data securely using AWS API Gateway.
+## Data Flow
+1. **Populate DynamoDB**:  
+   The `data.csv` file is uploaded to the S3 bucket, which triggers an AWS Lambda function to process the file and populate the DynamoDB table.
+   
+2. **Frontend**:  
+   - Built with **React**.
+   - Includes a **Login system** utilizing **Access Tokens** and **Refresh Tokens** for authentication.
+   - The React app fetches football player data via **AWS API Gateway**.
 
-- **Backend**:
-  - Lambda functions handle the logic.
-  - Code is organized into three main directories:
-    - `frontend/` - React application
-    - `backend/` - Lambda function code
-    - `terraform/` - Terraform scripts for infrastructure as code
+3. **Backend**:  
+   - **Lambda** functions reside in the `backend/` folder, handling the core logic such as CSV parsing and data insertion into DynamoDB.
+   - **Frontend** code resides in the `frontend/` folder.
+   - **Terraform** code, located in `terraform/`, handles the infrastructure setup.
 
-- **Deployment Pipeline**:
-  - A `make_packages.groovy` script is available to create Lambda deployment artifacts, helping streamline the CI/CD pipeline.
-
----
-
-## Directory Structure
-football_app/ 
-├── backend/ # Lambda code 
-├── frontend/ # React app 
-├── terraform/ # Terraform scripts 
-└── make_packages.groovy
+4. **Deployment Pipeline**:
+   - The project includes a **make_packages.groovy** script to streamline the process of creating Lambda artifacts and deploying them.
 
 ---
 
-## Setup Instructions (Coming Soon)---
+## Deployment Process
+1. **Terraform** scripts are in the `terraform/` folder, used to provision AWS resources like DynamoDB, S3, Lambda, and API Gateway.
+2. The **make_packages.groovy** script is used to package and deploy Lambda artifacts.
+
+---
+### Backend
+- To set up the backend (Lambda), use AWS CLI or SDK to test the functions locally.
+
+### Frontend
+- Navigate to the `frontend/` directory.
+- Update your .env file to the apigateway endpoint.
+- Run the React app:
+
+#### For Development Environment
+```
+yarn dev 
+```
+
+#### For Production build the project and serve it (In future will move to vercel or AWS Amplify)
+```
+yarn build 
+```
+
+```
+yarn serve 
+```
+
+## Setup Instructions
+1. Make sure you have your aws credentials configured using 
+```
+aws configure
+```
+2. Validate terraform scripts using 
+```
+terraform validate
+```
+3. Check out infra by  
+```
+terraform plan
+```
+4. Finally deploy the infrastructure using 
+```
+terraform apply
+```
