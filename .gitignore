@@ -11,7 +11,7 @@ coverage
 # Ignore environment variables
 .env
 # Ignore IDE specific files
-*.config.js
+eslint.config.js
 # Ignore local environment variables
 .env.local
 #Ignore lock files
