@@ -5,6 +5,8 @@ resource "aws_lambda_function" "login_function" {
   handler       = "login.lambda_handler"
   runtime       = "python3.12"
   timeout       = 15
+
+  depends_on = [aws_dynamodb_table.players_table, aws_iam_policy.lambda_dynamodb_exec_policy]
 }
 
 resource "aws_lambda_function" "logout_function" {
@@ -14,6 +16,8 @@ resource "aws_lambda_function" "logout_function" {
   handler       = "logout.lambda_handler"
   runtime       = "python3.12"
   timeout       = 15
+
+  depends_on = [aws_dynamodb_table.players_table, aws_iam_policy.lambda_dynamodb_exec_policy]
 }
 
 resource "aws_lambda_function" "refresh_token_function" {
@@ -23,6 +27,8 @@ resource "aws_lambda_function" "refresh_token_function" {
   handler       = "refresh_token.lambda_handler"
   runtime       = "python3.12"
   timeout       = 15
+
+  depends_on = [aws_dynamodb_table.players_table, aws_iam_policy.lambda_dynamodb_exec_policy]
 }
 
 resource "aws_lambda_function" "get_players_function" {
@@ -32,6 +38,8 @@ resource "aws_lambda_function" "get_players_function" {
   handler       = "get_players.lambda_handler"
   runtime       = "python3.12"
   timeout       = 15
+
+  depends_on = [aws_dynamodb_table.players_table, aws_iam_policy.lambda_dynamodb_exec_policy]
 }
 
 resource "aws_lambda_function" "verify_token_function" {
@@ -41,6 +49,8 @@ resource "aws_lambda_function" "verify_token_function" {
   handler       = "verify_token.lambda_handler"
   runtime       = "python3.12"
   timeout       = 15
+
+  depends_on = [aws_dynamodb_table.players_table, aws_iam_policy.lambda_dynamodb_exec_policy]
 }
 
 resource "aws_lambda_function" "insert_players_function" {
