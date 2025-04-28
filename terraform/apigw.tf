@@ -12,7 +12,9 @@ resource "aws_api_gateway_deployment" "football_deployment" {
     aws_api_gateway_integration.login_integration,
     aws_api_gateway_integration.login_options_integration,
     aws_api_gateway_integration.players_get_integration,
-    aws_api_gateway_integration.players_options_integration
+    aws_api_gateway_integration.players_options_integration,
+    aws_api_gateway_integration.refresh_token_get_integration,
+    aws_api_gateway_integration.refresh_token_options_integration
   ]
 }
 
