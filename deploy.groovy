@@ -159,7 +159,7 @@ pipeline {
                     script {
                         echo "Copying data.csv to S3"
                         sh """
-                            aws s3 cp /home/rohit/Desktop/aws/terraform/football_app/terraform/data/players.csv s3://lambda-trigger-bucket-demo-iabkacbefifopwqibfoqiefoq
+                            aws s3 cp terraform/data/players.csv s3://lambda-trigger-bucket-demo-iabkacbefifopwqibfoqiefoq
                         """
                     }
                 }
