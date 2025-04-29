@@ -15,7 +15,7 @@ This is a **Football Application** built using **AWS** services and a **React** 
 
 ## Data Flow
 1. **Populate DynamoDB**:  
-   The `data.csv` file is uploaded to the S3 bucket, which triggers an AWS Lambda function to process the file and populate the DynamoDB table.
+   The `terraform/data/players.csv` file is uploaded to the S3 bucket, which triggers an AWS Lambda function to process the file and populate the DynamoDB table.
    
 2. **Frontend**:  
    - Built with **React**.
@@ -33,8 +33,9 @@ This is a **Football Application** built using **AWS** services and a **React** 
 ---
 
 ## Deployment Process
-1. **Terraform** scripts are in the `terraform/` folder, used to provision AWS resources like DynamoDB, S3, Lambda, and API Gateway.
-2. The **make_packages.groovy** script is used to package and deploy Lambda artifacts.
+- **Terraform** scripts are in the `terraform/` folder, used to provision AWS resources like DynamoDB, S3, Lambda, and API Gateway.
+- The **make_packages.groovy** script is used to package and deploy Lambda artifacts for **development**.
+- The **deploy.groovy** script is used to handle end to end deployment for the infrastructure.
 
 ---
 ### Backend
@@ -59,6 +60,11 @@ yarn build
 yarn serve 
 ```
 
+## Prequisites
+- AWS CLI installed
+- Terraform installed
+- AWS IAM user (you can give admin permissions for now)
+
 ## Setup Instructions
 1. Make sure you have your aws credentials configured using 
 ```
@@ -76,3 +82,7 @@ terraform plan
 ```
 terraform apply
 ```
+
+## Using Jenkins
+- Create a credential of Kind **AWS Credentials**.
+- The script `deploy.groovy` checks the identity before proceeding.
